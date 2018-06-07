@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ATLoginButton">
+        <!-- Button的本身颜色 -->
+        <attr name="button_color" format="color" />  
+        <!-- Button中文字的颜色 -->
+        <attr name="text_color" format="color" />  
+        <!-- Button中文字的大小 -->
+        <attr name="text_size" format="dimension" />
+        <!-- Button中要显示的文字 -->
+        <attr name="login_text" format="string" />
+        <!-- 失败后要显示的文字 -->
+        <attr name="failed_text" format="string" />
+        <!-- 旋转的圆形的颜色 -->
+        <attr name="circle_loading_color" format="color" />
+        <!-- 旋转的圆形里面弧形的半径大小 -->
+        <attr name="circle_loading_width" format="dimension" />
+        <!-- 失败后Button的颜色 -->
+        <attr name="failed_button_color" format="color" />
+    </declare-styleable> 
+</resources>
