@@ -147,14 +147,14 @@ static int push(uint8_t *bytes) {
     size = avCodecContext->width * avCodecContext->height;
 
     //安卓摄像头数据为NV21格式，此处将其转换为YUV420P格式
-//    memcpy(avFrame->data[0], bytes, size); //Y
-//    for (j = 0; j < size / 4; j++) {
-//        *(avFrame->data[2] + j) = *(bytes + size + j * 2); // V
-//        *(avFrame->data[1] + j) = *(bytes + size + j * 2 + 1); //U
-//    }
-    avFrame->data[0] = bytes; //PCM Data
-    avFrame->data[2] = bytes + y_size; // U
-    avFrame->data[1] = bytes + y_size * 5 / 4; // V
+    memcpy(avFrame->data[0], bytes, size); //Y
+    for (j = 0; j < size / 4; j++) {
+        *(avFrame->data[2] + j) = *(bytes + size + j * 2); // V
+        *(avFrame->data[1] + j) = *(bytes + size + j * 2 + 1); //U
+    }
+//    avFrame->data[0] = bytes; //PCM Data
+//    avFrame->data[2] = bytes + y_size; // U
+//    avFrame->data[1] = bytes + y_size * 5 / 4; // V
     int ret = avcodec_encode_video2(avCodecContext, &avPacket, avFrame, &got_picture);
     LOGD("avcodec_encode_video2 spend time %ld", (int) ((av_gettime() - start_time) / 1000));
     if (ret < 0) {
