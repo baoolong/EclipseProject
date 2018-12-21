@@ -129,4 +129,39 @@ public class WebServiceUtils {
             result = null;
         return result;
     }
+    
+    
+    /**
+     * 文件审批的请求Json数据
+     *
+     * @param parameters �?要传递的参数
+     * @param methodName 方法名字
+     */
+    public String requestApprovalWeb(LinkedHashMap<String, Object> parameters, String methodName) {
+        //得到Soap对象
+        SoapObject soap = new SoapObject(Constants.APPROVAL_NAMESPACE, methodName);
+        if (parameters != null && !parameters.isEmpty()) {
+            Iterator<Entry<String, Object>> iterator = parameters.entrySet().iterator();
+            while (iterator.hasNext()) {
+                //遍历map并且将参数和参数名添加进SoapObject对象
+                Entry<String, Object> entry = iterator.next();
+                soap.addProperty(entry.getKey(), entry.getValue());
+            }
+        }
+        //初始化传递消息的信封
+        SoapSerializationEnvelope envelope = getEnvelope();
+        envelope.bodyOut = soap;
+        //获得WebService通信的桥�?
+        HttpTransportSE ht = new HttpTransportSE(Constants.APPROVAL_URL);
+        String result = null;
+        try {
+            ht.call(null, envelope);
+            result = envelope.getResponse().toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (result != null && (result.equals("anyType{}")||result.equals("true")))
+            result = null;
+        return result;
+    }
 }

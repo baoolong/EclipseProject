@@ -29,5 +29,7 @@
 	<classpathentry kind="lib" path="libs/okhttp-3.4.1.jar"/>
 	<classpathentry kind="lib" path="libs/okhttputils-2_6_2.jar"/>
 	<classpathentry kind="lib" path="libs/okio-1.9.0.jar"/>
+	<classpathentry kind="lib" path="libs/commons-lang3-3.7.jar"/>
+	<classpathentry kind="lib" path="libs/commons-text-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

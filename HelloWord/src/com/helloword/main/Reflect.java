@@ -42,11 +42,11 @@ public class Reflect {
 		Class c1 = Class.forName("GsonTest");  
 		//第二种方式：  
 		//java中每个类型都有class 属性.  
-		Class c2 = GsonTest.class;  
+		Class c2 = CommonTest.class;  
 		   
 		//第三种方式：  
 		//java语言中任何一个java对象都有getClass 方法  
-		GsonTest g = new GsonTest();  
+		CommonTest g = new CommonTest();  
 		Class c3 = g.getClass(); //c3是运行时类 (e的运行时类是Employee) 
 	}
 	
@@ -60,7 +60,7 @@ public class Reflect {
 		Class c =Class.forName("GsonTest");  
 		  
 		//创建此Class 对象所表示的类的一个新实例  
-		GsonTest o = (GsonTest) c.newInstance(); //调用了Employee的无参数构造方法.  
+		CommonTest o = (CommonTest) c.newInstance(); //调用了Employee的无参数构造方法.  
 	}
 	
 	

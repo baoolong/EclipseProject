@@ -41,11 +41,20 @@ public class Crawler {
 	private ExecutorService daoThreadPool = Executors.newFixedThreadPool(6);
 	private CrawlerDao  crawlerDao=new CrawlerDao();
 	private Map<Long,PageInfoBin> storeMap=new HashMap<>();
+	
+	
+	public static void main(String[] args) {
+//		//GuiContorl contorl=new GuiContorl();
+//		//contorl.showView();
+		Crawler crawler=new Crawler();
+//		//crawler.setCountLinsenter(contorl);
+		crawler.start();
+	}
 
 	
 	//main函数
     public  void start() {
-        String url = "http://pic.yesky.com/378/625177378.shtml";
+        String url = "http://pic.yesky.com/276/661052776_2.shtml";
         //保存到本地的网页地址
         storeMap.put(99999l, new PageInfoBin(99999l,url, "", 0));
         Save_Html(storeMap.get(99999l));
@@ -162,9 +171,9 @@ public class Crawler {
 	            
 	            
 	            //分离出html下<a>...</a>之间的所有东西
-	            Elements links = linkShow.select("a[href]");
-	            links.addAll(linkXgtj.select("a[href]"));
-	            links.addAll(linkbottom.select("a[href]"));
+	            Elements links = doc.select("a[href]");
+//	            links.addAll(linkXgtj.select("a[href]"));
+//	            links.addAll(linkbottom.select("a[href]"));
 	            
 	            // 扩展名为.png的图片
 	            Elements pics = linkMid.select("img[src$=.png]");
